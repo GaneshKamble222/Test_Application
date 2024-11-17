@@ -44,11 +44,11 @@ jobs:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.TESTAPPDEV }}
           package: "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
-		  
-	QA:
+
+  QA:
     runs-on: ubuntu-latest
     environment: QA
-	needs: DEV
+    needs: DEV
 
     env:
       AZURE_WEBAPP_NAME: Test-App-QA
@@ -83,11 +83,11 @@ jobs:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.TESTAPPQA }}
           package: "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
-		  
-	PROD:
+
+  PROD:
     runs-on: ubuntu-latest
     environment: PROD
-	needs: QA
+    needs: QA
 
     env:
       AZURE_WEBAPP_NAME: Test-App-Prod
